@@ -2,14 +2,14 @@
 set -e
 
 kubeadm init --config /tmp/master-configuration.yml \
-  --ignore-preflight-errors=Swap,NumCPU
+  --ignore-preflight-errors=Swap,NumCPU,Mem
 
 kubeadm token create ${token}
 
 [ -d $HOME/.kube ] || mkdir -p $HOME/.kube
 ln -s /etc/kubernetes/admin.conf $HOME/.kube/config
 
-until nc -z localhost 6443; do
+until nc -z -v localhost 6443; do
   echo "Waiting for API server to respond"
   sleep 5
 done
