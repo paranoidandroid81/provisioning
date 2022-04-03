@@ -74,7 +74,7 @@ variable "digitalocean_ssh_keys" {
 }
 
 variable "digitalocean_region" {
-  default = "fra1"
+  default = "nyc3"
 }
 
 variable "digitalocean_size" {

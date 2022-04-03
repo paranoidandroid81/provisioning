@@ -1,14 +1,14 @@
-module "provider" {
-  source = "./provider/hcloud"
+# module "provider" {
+#   source = "./provider/hcloud"
 
-  token           = var.hcloud_token
-  ssh_keys        = var.hcloud_ssh_keys
-  location        = var.hcloud_location
-  type            = var.hcloud_type
-  image           = var.hcloud_image
-  hosts           = var.node_count
-  hostname_format = var.hostname_format
-}
+#   token           = var.hcloud_token
+#   ssh_keys        = var.hcloud_ssh_keys
+#   location        = var.hcloud_location
+#   type            = var.hcloud_type
+#   image           = var.hcloud_image
+#   hosts           = var.node_count
+#   hostname_format = var.hostname_format
+# }
 
 # module "provider" {
 #   source = "./provider/scaleway"
@@ -23,17 +23,17 @@ module "provider" {
 #   hostname_format = var.hostname_format
 # }
 
-# module "provider" {
-#   source = "./provider/digitalocean"
-#
-#   token           = var.digitalocean_token
-#   ssh_keys        = var.digitalocean_ssh_keys
-#   region          = var.digitalocean_region
-#   size            = var.digitalocean_size
-#   image           = var.digitalocean_image
-#   hosts           = var.node_count
-#   hostname_format = var.hostname_format
-# }
+module "provider" {
+  source = "./provider/digitalocean"
+
+  token           = var.digitalocean_token
+  ssh_keys        = var.digitalocean_ssh_keys
+  region          = var.digitalocean_region
+  size            = var.digitalocean_size
+  image           = var.digitalocean_image
+  hosts           = var.node_count
+  hostname_format = var.hostname_format
+}
 
 # module "provider" {
 #   source = "./provider/packet"
@@ -86,16 +86,16 @@ module "swap" {
   connections = module.provider.public_ips
 }
 
-module "dns" {
-  source = "./dns/cloudflare"
+# module "dns" {
+#   source = "./dns/cloudflare"
 
-  node_count = var.node_count
-  email      = var.cloudflare_email
-  api_token  = var.cloudflare_api_token
-  domain     = var.domain
-  public_ips = module.provider.public_ips
-  hostnames  = module.provider.hostnames
-}
+#   node_count = var.node_count
+#   email      = var.cloudflare_email
+#   api_token  = var.cloudflare_api_token
+#   domain     = var.domain
+#   public_ips = module.provider.public_ips
+#   hostnames  = module.provider.hostnames
+# }
 
 # module "dns" {
 #   source = "./dns/aws"

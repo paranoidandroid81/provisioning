@@ -71,7 +71,7 @@ export TF_VAR_scaleway_secret_key=<secret_key>
 ```sh
 export TF_VAR_digitalocean_token=<token>
 export TF_VAR_digitalocean_ssh_keys=<keys>
-export TF_VAR_digitalocean_ssh_keys='["<id-key1>", "<id-key2>"]'
+export TF_VAR_digitalocean_ssh_keys='["<id-key1>", "<id-key2>"]' # SSH key fingerprint from DO
 # Defaults:
 # export TF_VAR_digitalocean_region="fra1"
 # export TF_VAR_digitalocean_size="1gb"
